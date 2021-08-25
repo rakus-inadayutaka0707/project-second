@@ -42,6 +42,15 @@ public class WordService {
 	}
 
 	/**
+	 * 出力する問題の為の単語検索.
+	 * 
+	 * @return 単語リスト
+	 */
+	public List<Word> findTrueQuestionFlag() {
+		return repository.findTrueQuestionFlag();
+	}
+
+	/**
 	 * 単語の登録・更新をする.
 	 * 
 	 * @param word 登録・更新したい単語情報
