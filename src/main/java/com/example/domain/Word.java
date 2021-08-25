@@ -17,6 +17,8 @@ public class Word {
 	private Integer categoryId;
 	/** 正解数 */
 	private Integer count;
+	/** 出力フラグ */
+	private Integer questionFlag;
 
 	public Integer getId() {
 		return id;
@@ -58,9 +60,17 @@ public class Word {
 		this.count = count;
 	}
 
+	public Integer getQuestionFlag() {
+		return questionFlag;
+	}
+
+	public void setQuestionFlag(Integer questionFlag) {
+		this.questionFlag = questionFlag;
+	}
+
 	@Override
 	public String toString() {
 		return "Word [id=" + id + ", word=" + word + ", meaning=" + meaning + ", categoryId=" + categoryId + ", count="
-				+ count + "]";
+				+ count + ", questionFlag=" + questionFlag + "]";
 	}
 }

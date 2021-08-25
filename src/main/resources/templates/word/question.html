@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <h1>練習問題</h1>
+    <a th:href="@{/}">単語一覧へ</a>
+    <div th:if="${hiddenInput} != true">
+        <p th:text="${session.question.meaning}"></p>
+        <form th:action="@{/answer}" method="post">
+            <input type="text" name="input" autocomplete="off">
+            <button>回答</button>
+        </form>
+    </div>
+    <div th:unless="${hiddenInput} != true">
+        <span th:if="${result} == true" style="color:green" th:text="${resultText}"></span>
+        <span th:if="${result} == false" style="color:red" th:text="${resultText}"></span>
+        <p>回答：<span th:text="${input}"></span></p>
+        <p>答え：<span th:text="${session.question.word}"></span></p>
+        <form th:action="@{/reQuestion}" method="post">
+            <label for="output-true">また欲しい</label>
+            <input type="radio" name="output" id="output-true" value=1 checked>
+            <label for="output-false">もういらない</label>
+            <input type="radio" name="output" id="output-false" value=0>
+            <br>
+            <button>次の問題</button>
+        </form>
+    </div>
+</body>
+
+</html>

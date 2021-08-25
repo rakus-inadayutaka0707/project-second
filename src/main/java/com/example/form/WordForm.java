@@ -1,5 +1,7 @@
 package com.example.form;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * 単語登録時のフォーム.
  * 
@@ -8,8 +10,10 @@ package com.example.form;
  */
 public class WordForm {
 	/** 単語 */
+	@NotBlank(message="入力してください")
 	private String word;
 	/** 意味 */
+	@NotBlank(message="入力してください")
 	private String meaning;
 	/** カテゴリID */
 	private String categoryId;

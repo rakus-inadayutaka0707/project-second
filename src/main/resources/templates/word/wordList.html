@@ -9,12 +9,39 @@
 <body>
 	<h1>単語リスト</h1>
 	<a th:href="@{/to-insert}">単語登録画面へ</a>
-	<table border="1">
-		<tr th:each="word:${wordList}">
-			<td th:text="${word.word}"></td>
-			<td th:text="${word.meaning}"></td>
-		</tr>
-	</table>
+	<span th:if="${count} != 0">
+		<a th:href="@{/question}">練習問題へ</a>
+	</span>
+	<div th:if="${count} != 0">
+		<table>
+			<tr>
+				<th>単語</th>
+				<th>意味</th>
+				<th>削除フラグ</th>
+				<th>問題出力フラグ</th>
+				<th>正解数</th>
+			</tr>
+			<tr th:each="word:${wordList}">
+				<td th:text="${word.word}"></td>
+				<td th:text="${word.meaning}"></td>
+				<td>
+					<form th:action="@{/delete}" method="post">
+						<input type="hidden" name="id" th:value="${word.id}">
+						<button>削除</button>
+					</form>
+				</td>
+				<td>
+					<div th:if="${word.questionFlag} == 0">
+					<form th:action="@{/update}" method="post">
+						<input type="hidden" name="id" th:value="${word.id}">
+						<button>もう一度問題にする</button>
+					</form>
+					</div>
+				</td>
+				<td th:text="${word.count}"></td>
+			</tr>
+		</table>
+	</div>
 </body>
 
 </html>

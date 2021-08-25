@@ -9,12 +9,15 @@
 <body>
     <h1>単語登録</h1>
     <form th:action="@{/insert}" th:object="${wordForm}" method="post">
+    	<div th:errors="*{word}" style="color:red"></div>
         <label for="word">単語</label>
         <input type="text" name="word" id="word" th:field="*{word}"><br>
+        <div th:errors="*{meaning}" style="color:red"></div>
         <label for="meaning">意味</label>
         <input type="text" name="meaning" id="meaning" th:field="*{meaning}"><br>
         <button>登録</button>
     </form>
+    <a th:href="@{/}">単語一覧</a>
 </body>
 
 </html>
